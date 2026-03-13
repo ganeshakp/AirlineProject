@@ -1,0 +1,16 @@
+/* Passenger Master component styles */
+.passenger-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.passenger-table th,
+.passenger-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.passenger-table th {
+  background-color: #f2f2f2;
+}
