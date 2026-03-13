@@ -1,0 +1,46 @@
+
+
+$tableColor : #a38db1;
+
+.passengerValue {
+  padding-left: 5px;
+  text-align: left;
+}
+
+#seatsTable {
+  background-color: $tableColor;
+
+  td,
+  th {
+    padding: 4px;
+    text-align: center;
+  }
+}
+
+#seatsTable1 {
+  td,
+  th {
+    padding: 4px;
+    text-align: center;
+  }
+}
+
+#legends {
+  padding: 4px;
+  color: black;
+  text-align: center;
+  font-style: italic;
+  background-color: $tableColor;
+
+  td,
+  th {
+    border: solid 1px black;
+  }
+}
+
+#legends1 {
+  td,
+  th {
+    border: solid 1px black;
+  }
+}
