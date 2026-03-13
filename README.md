@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 
 # AirlineProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.0.
+=======
+# AirlineProject
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.0.
+>>>>>>> 997f8ec91f9e1cbd54fdc4920c39ca44f314f432
 
 ## Development server
 

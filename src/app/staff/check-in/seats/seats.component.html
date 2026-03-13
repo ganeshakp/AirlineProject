@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <app-alert [message]="alertMessage" *ngIf="alertMessage" (close)="onClosed()"></app-alert>
 <div *ngIf="selectedFlight">
@@ -105,10 +106,166 @@
                 <td>Empty Seat</td>
             </tr>
             <!-- <tr>
+=======
+<app-alert [message]="alertMessage" *ngIf="alertMessage" (close)="onClosed()"></app-alert>
+<div *ngIf="selectedFlight">
+       
+    <div class="col-md-3">
+               
+        <table id="seatsTable">
+                       
+            <tr *ngFor="let seatNumber of firstCoulmn">
+                               
+                <td>{{ seatNumber }}</td>
+                               
+                <td>
+                                       
+                    <img
+                        [src]="getSeatImage(seatNumber)"
+                        alt=""
+                        height="40px"
+                        width="40px"
+                        class="img-responsive pull-right"
+                        (mouseover)="onSeatHover(seatNumber)"
+                        (mouseleave)="this.passenger = undefined"
+                        (click)="onSeatClick(seatNumber)"
+                        [ngStyle]="checkInBg(seatNumber)"
+                        style="cursor: pointer"
+                    />
+                                   
+                </td>
+                               
+                <td>
+                                       
+                    <img
+                        [src]="getSeatImage(seatNumber + 10)"
+                        alt=""
+                        height="40px"
+                        width="40px"
+                        class="img-responsive"
+                        (mouseover)="onSeatHover(seatNumber + 10)"
+                        (mouseleave)="this.passenger = undefined"
+                        (click)="onSeatClick(seatNumber + 10)"
+                        [ngStyle]="checkInBg(seatNumber + 10)"
+                    />
+                                   
+                </td>
+                               
+                <td>{{ seatNumber + 10 }}</td>
+                           
+            </tr>
+                   
+        </table>
+           
+    </div>
+       
+    <div class="col-md-3" style="text-align: center">
+                <br />
+                <br />
+                <br />
+                <br />
+               
+        <table id="legends">
+                       
+            <tr>
+                               
+                <td>
+                                       
+                    <img
+                        src="../../../../../assets/PassengerLarge.png"
+                        alt=""
+                        height="45px"
+                        width="45x"
+                        class="img-responsive pull-right"
+                        style="background-color: #6dc665"
+                    />
+                                   
+                </td>
+                               
+                <td>CheckedIn</td>
+                           
+            </tr>
+                       
+            <tr>
+                               
+                <td>
+                                       
+                    <img
+                        src="../../../../../assets/PassengerLarge.png"
+                        alt=""
+                        height="45px"
+                        width="45x"
+                        class="img-responsive pull-right"
+                    />
+                                   
+                </td>
+                               
+                <td>Yet To Check In</td>
+                           
+            </tr>
+                       
+            <tr>
+                               
+                <td>
+                                       
+                    <img
+                        src="../../../../../assets/WheelChair.png"
+                        alt=""
+                        height="45px"
+                        width="45x"
+                        class="img-responsive pull-right"
+                    />
+                                   
+                </td>
+                               
+                <td>Wheel Chair</td>
+                           
+            </tr>
+                       
+            <tr>
+                               
+                <td>
+                                       
+                    <img
+                        src="../../../../../assets/InfantLarge.png"
+                        alt=""
+                        height="45px"
+                        width="45x"
+                        class="img-responsive pull-right"
+                    />
+                                   
+                </td>
+                               
+                <td>Infant</td>
+                           
+            </tr>
+
+                       
+            <tr>
+                               
+                <td>
+                                       
+                    <img
+                        src="../../../../../assets/ArmChairLarge.png"
+                        alt=""
+                        height="45px"
+                        width="45x"
+                        class="img-responsive pull-right"
+                    />
+                                   
+                </td>
+                               
+                <td>Empty Seat</td>
+                           
+            </tr>
+                       
+            <!-- <tr>
+>>>>>>> 997f8ec91f9e1cbd54fdc4920c39ca44f314f432
         <td colspan="2">
 
         </td>
       </tr> -->
+<<<<<<< HEAD
         </table>
         <br />
         <br />
@@ -161,3 +318,91 @@
         </table>
     </div>
 </div>
+=======
+                   
+        </table>
+                <br />
+                <br />
+               
+        <button
+            style="align-self: center"
+            class="btn btn-primary"
+            (click)="confirmAllChanges()"
+        >
+                        Confirm Changes        
+        </button>
+           
+    </div>
+        <br />
+        <br />
+        <br />
+        <br />
+       
+    <div
+        class="col-md-5"
+        *ngIf="this.passenger"
+        style="background-color: #bdafd5; color: black"
+    >
+               
+        <h3 style="text-align: center">Check In Details</h3>
+               
+        <hr />
+               
+        <table style="align-items: center">
+                       
+            <tr>
+                               
+                <td class="pull-right">
+                                       
+                    <h4>Seat :</h4>
+                                   
+                </td>
+                               
+                <td style="text-align: center">
+                                       
+                    <h4 class="passengerValue">{{ this.passenger?.seatNo }}</h4>
+                                   
+                </td>
+                           
+            </tr>
+                       
+            <tr>
+                               
+                <td class="pull-right">
+                                       
+                    <h4>Passenger Name :</h4>
+                                   
+                </td>
+                               
+                <td style="text-align: center">
+                                       
+                    <h4 class="passengerValue">{{ this.passenger?.name }}</h4>
+                                   
+                </td>
+                           
+            </tr>
+                       
+            <tr>
+                               
+                <td class="pull-right">
+                                       
+                    <h4>Checked In :</h4>
+                                   
+                </td>
+                               
+                <td style="text-align: center">
+                                       
+                    <h4 class="passengerValue">
+                                               
+                        {{ this.passenger?.checkedIn ? 'Yes' : 'No' }}                    
+                    </h4>
+                                   
+                </td>
+                           
+            </tr>
+                   
+        </table>
+           
+    </div>
+</div>
+>>>>>>> 997f8ec91f9e1cbd54fdc4920c39ca44f314f432

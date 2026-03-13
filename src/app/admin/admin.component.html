@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <div class="col-md-4">
       <app-flights></app-flights>
@@ -33,3 +34,62 @@
         </div>
       </div>
     </div>
+=======
+<div class="col-md-4">  <app-flights></app-flights></div>
+<div class="col-md-8">
+     
+    <div class="row" *ngIf="selectedFlight">
+             
+        <div class="col-xs-12">
+                     
+            <h1>
+                              Flight Name : {{ selectedFlight?.name }}              
+                <div class="btn-group" appdropdown>
+                                     
+                    <button type="button" class="btn btn-primary dropdown-toggle">
+                                              Manage <span class="caret"></span>          
+                               
+                    </button>
+                                     
+                    <ul class="dropdown-menu">
+                                             
+                        <li>
+                                                     
+                            <a
+                                style="cursor: pointer"
+                                [routerLink]="[selectedFlightId, 'passengersMaster']"
+                            >
+                                Passengers
+                            </a>
+                                                 
+                        </li>
+                                             
+                        <li>
+                                                     
+                            <a
+                                style="cursor: pointer"
+                                [routerLink]="[selectedFlightId, 'services']"
+                            >
+                                                              Flight Services            
+                                             
+                            </a>
+                                                 
+                        </li>
+                                         
+                    </ul>
+                                 
+                </div>
+                         
+            </h1>
+                 
+        </div>
+         
+    </div>
+     
+    <div class="row">
+           
+        <div class="col-xs-12">      <router-outlet></router-outlet>    </div>
+         
+    </div>
+</div>
+>>>>>>> 997f8ec91f9e1cbd54fdc4920c39ca44f314f432

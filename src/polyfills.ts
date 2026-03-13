@@ -8,8 +8,13 @@
  *      file.
  *
  * The current setup is for so-called "evergreen" browsers; the last versions of browsers that
+<<<<<<< HEAD
  * automatically update themselves. This includes Safari >= 10, Chrome >= 55 (including Opera),
  * Edge >= 13 on the desktop, and iOS 10 and Chrome on mobile.
+=======
+ * automatically update themselves. This includes recent versions of Safari, Chrome (including
+ * Opera), Edge on the desktop, and iOS and Chrome on mobile.
+>>>>>>> 997f8ec91f9e1cbd54fdc4920c39ca44f314f432
  *
  * Learn more in https://angular.io/guide/browser-support
  */

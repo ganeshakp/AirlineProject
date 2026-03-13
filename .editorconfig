@@ -13,4 +13,8 @@ quote_type = single
 
 [*.md]
 max_line_length = off
+<<<<<<< HEAD
 trim_trailing_whitespace = false
+=======
+trim_trailing_whitespace = false
+>>>>>>> 997f8ec91f9e1cbd54fdc4920c39ca44f314f432

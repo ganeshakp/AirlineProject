@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "tagname-lowercase": true,
   "attr-lowercase": false,
   "attr-value-double-quotes": false,
@@ -11,3 +12,16 @@
   "title-require": true
 }
 
+=======
+    "tagname-lowercase": true,
+    "attr-lowercase": false,
+    "attr-value-double-quotes": false,
+    "doctype-first": false,
+    "tag-pair": true,
+    "spec-char-escape": true,
+    "id-unique": true,
+    "src-not-empty": true,
+    "attr-no-duplication": true,
+    "title-require": true
+}
+>>>>>>> 997f8ec91f9e1cbd54fdc4920c39ca44f314f432

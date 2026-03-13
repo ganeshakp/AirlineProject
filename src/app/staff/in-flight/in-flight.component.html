@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <app-alert [message]="alertMessage" *ngIf="alertMessage" (close)="onClosed()"></app-alert>
 <div *ngIf="selectedFlight">
@@ -154,3 +155,305 @@
     </div>
 
 </div>
+=======
+<app-alert [message]="alertMessage" *ngIf="alertMessage" (close)="onClosed()"></app-alert>
+<div *ngIf="selectedFlight">
+       
+    <div class="col-md-3">
+               
+        <table id="seatsTable">
+                       
+            <tr *ngFor="let seatNumber of firstCoulmn; let i = index">
+                               
+                <td>{{ seatNumber }}</td>
+                               
+                <td>
+                                       
+                    <img
+                        [src]="getSeatImage(seatNumber)"
+                        alt=""
+                        height="40px"
+                        width="40px"
+                        class="img-responsive pull-right"
+                        (click)="onSeatClick(seatNumber)"
+                        [ngStyle]="checkInBg(seatNumber)"
+                        style="cursor: pointer"
+                    />
+                                   
+                </td>
+                               
+                <td>
+                                       
+                    <img
+                        [src]="getSeatImage(seatNumber + 10)"
+                        alt=""
+                        height="40px"
+                        width="40px"
+                        class="img-responsive"
+                        (click)="onSeatClick(seatNumber + 10)"
+                        [ngStyle]="checkInBg(seatNumber + 10)"
+                    />
+                                   
+                </td>
+                               
+                <td>{{ seatNumber + 10 }}</td>
+                           
+            </tr>
+                   
+        </table>
+           
+    </div>
+       
+    <div class="col-md-3">
+                <br />
+                <br />
+                <br />
+                <br />
+               
+        <table id="legends">
+                       
+            <tr>
+                               
+                <td>
+                                       
+                    <img
+                        src="../../../../../assets/StdMealsLarge.png"
+                        alt=""
+                        height="45px"
+                        width="45x"
+                        class="img-responsive pull-right"
+                    />
+                                   
+                </td>
+                               
+                <td>Standard Meals</td>
+                           
+            </tr>
+                       
+            <tr>
+                               
+                <td>
+                                       
+                    <img
+                        src="../../../../../assets/splMealsLarge.png"
+                        alt=""
+                        height="45px"
+                        width="45x"
+                        class="img-responsive pull-right"
+                    />
+                                   
+                </td>
+                               
+                <td>Special Meals</td>
+                           
+            </tr>
+                       
+            <tr>
+                               
+                <td>
+                                       
+                    <img
+                        src="../../../../../assets/ArmChairLarge.png"
+                        alt=""
+                        height="45px"
+                        width="45x"
+                        class="img-responsive pull-right"
+                    />
+                                   
+                </td>
+                               
+                <td>Empty Seat</td>
+                           
+            </tr>
+                   
+        </table>
+           
+    </div>
+
+        <br />
+        <br />
+       
+    <div
+        class="col-md-6"
+        *ngIf="this.passenger"
+        style="background-color: #bdafd5; color: black; text-align: center"
+    >
+               
+        <h3 style="text-align: center">Passenger - Services</h3>
+               
+        <hr />
+               
+        <table style="align-items: center">
+                       
+            <tr>
+                               
+                <td class="pull-right">
+                                       
+                    <h4>Passenger Name :</h4>
+                                   
+                </td>
+                               
+                <td style="text-align: center">
+                                       
+                    <h4 class="passengerValue">{{ this.passenger?.name }}</h4>
+                                   
+                </td>
+                           
+            </tr>
+                       
+            <tr>
+                               
+                <td class="pull-right">
+                                       
+                    <h4>Seat :</h4>
+                                   
+                </td>
+                               
+                <td style="text-align: center">
+                                       
+                    <h4 class="passengerValue">{{ this.passenger?.seatNo }}</h4>
+                                   
+                </td>
+                           
+            </tr>
+
+                       
+            <tr>
+                               
+                <td class="pull-right">
+                                       
+                    <h4>Meal :</h4>
+                                   
+                </td>
+                               
+                <td style="text-align: center">
+                                       
+                    <select class="form-control" [(ngModel)]="passenger.mealPreference">
+                                               
+                        <option value="Special Meals">Special Meals</option>
+                                               
+                        <option value="Standard Meals">Standard Meals</option>
+                                           
+                    </select>
+                                   
+                </td>
+                           
+            </tr>
+
+                       
+            <tr>
+                               
+                <td colspan="2" style="text-align: center" appdropdown>
+                                       
+                    <h4>
+                        Ancilary Services
+                        <img
+                            class="remove dropdown-toggle"
+                            src="../../../assets/add.png"
+                        />
+                    </h4>
+                                       
+                    <ul id="serviceList" class="dropdown-menu">
+                                             
+                        <li *ngFor="let service of ancillaryServices; let i = index">
+                                                     
+                            <a
+                                >{{ service }}
+                                <img
+                                    class="listRemove"
+                                    [ngStyle]="checkService(i, 'ancillary')"
+                                    src="../../../assets/add.png"
+                                    (click)="onServiceAdd(i, 'ancillary')"
+                            /></a>
+                                                 
+                        </li>
+                                         
+                    </ul>
+                                   
+                </td>
+                           
+            </tr>
+                       
+            <tr>
+                               
+                <td colspan="2" style="text-align: center">
+                                       
+                    <div
+                        class="chip"
+                        *ngFor="let service of passenger.ancillaryServices; let i = index"
+                    >
+                        {{ service
+                        }}<img
+                            class="remove"
+                            src="../../../assets/remove.png"
+                            (click)="onServiceRemove(i, 'ancillary')"
+                        />
+                    </div>
+                                   
+                </td>
+                           
+            </tr>
+                       
+            <tr>
+                             
+                <td colspan="2" style="text-align: center" appdropdown>
+                                     
+                    <h4>
+                        Shopped Items
+                        <img
+                            class="remove dropdown-toggle"
+                            src="../../../assets/add.png"
+                        />
+                    </h4>
+                                     
+                    <ul id="serviceList1" class="dropdown-menu">
+                                           
+                        <li *ngFor="let item of shoppingList; let i = index">
+                                                   
+                            <a
+                                >{{ item }}
+                                <img
+                                    class="listRemove"
+                                    [ngStyle]="checkService(i, 'shoppingList')"
+                                    src="../../../assets/add.png"
+                                    (click)="onServiceAdd(i, 'shoppingList')"
+                            /></a>
+                                               
+                        </li>
+                                       
+                    </ul>
+                                 
+                </td>
+                         
+            </tr>
+                     
+            <tr>
+                             
+                <td colspan="2" style="text-align: center">
+                                     
+                    <div
+                        class="chip"
+                        *ngFor="let item of passenger.shoppedItems; let i = index"
+                    >
+                        {{ item
+                        }}<img
+                            class="remove"
+                            src="../../../assets/remove.png"
+                            (click)="onServiceRemove(i, 'shoppingList')"
+                        />
+                    </div>
+                                 
+                </td>
+                         
+            </tr>
+                   
+        </table>
+                <br />
+               
+        <button class="btn btn-primary" (click)="confirmAllChanges()">
+                      Save Changes        
+        </button>
+           
+    </div>
+</div>
+>>>>>>> 997f8ec91f9e1cbd54fdc4920c39ca44f314f432

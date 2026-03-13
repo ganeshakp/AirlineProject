@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
@@ -14,3 +15,20 @@
         "src/**/*.d.ts"
       ]
     }
+=======
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": []
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ]
+}
+>>>>>>> 997f8ec91f9e1cbd54fdc4920c39ca44f314f432

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <nav class="navbar navbar-inverse">
       <div class="container-fluid">
@@ -25,3 +26,71 @@
         </div>
       </div>
     </nav>
+=======
+<nav class="navbar navbar-inverse">
+     
+    <div class="container-fluid">
+           
+        <div class="navbar-header">
+                 
+            <a href="#" routerLinkActive="active" class="navbar-brand">MT Airlines</a>    
+             
+            <button
+                type="button"
+                (click)="toggleCollapsed()"
+                class="navbar-toggle collapsed"
+                data-toggle="collapse"
+                data-target="#navbarCollapse"
+                aria-expanded="false"
+            >
+                        <span class="sr-only">Toggle navigation</span>        
+                <span class="icon-bar"></span>         <span class="icon-bar"></span>    
+                    <span class="icon-bar"></span>      
+            </button>
+               
+        </div>
+           
+        <div
+            class="collapse navbar-collapse"
+            id="navbarCollapse"
+            [ngClass]="{ collapse: collapsed, 'navbar-collapse': true }"
+        >
+                 
+            <ul class="nav navbar-nav">
+                       
+                <li routerLinkActive="active">
+                    <a routerLink="/staff/checkin" *ngIf="userValid"
+                        >Check-In<span class="sr-only">(current)</span></a
+                    >
+                </li>
+                       
+                <li routerLinkActive="active">
+                    <a routerLink="/staff/inflight" *ngIf="userValid">In-Flight</a>
+                </li>
+                       
+                <li routerLinkActive="active">
+                    <a routerLink="/auth" *ngIf="!userValid">Authenticate</a>
+                </li>
+                       
+                <li routerLinkActive="active">
+                    <a routerLink="/admin" *ngIf="userValid && userRole === 'admin'"
+                        >Admin Portal</a
+                    >
+                </li>
+                     
+            </ul>
+                 
+            <ul class="nav navbar-nav navbar-right" *ngIf="userValid">
+                       
+                <li>
+                              <a style="cursor: pointer" (click)="onLogOut()">LogOut</a>  
+                         
+                </li>
+                     
+            </ul>
+               
+        </div>
+         
+    </div>
+</nav>
+>>>>>>> 997f8ec91f9e1cbd54fdc4920c39ca44f314f432

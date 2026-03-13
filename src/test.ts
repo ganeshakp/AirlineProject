@@ -3,6 +3,7 @@
 import 'zone.js/testing';
 import { getTestBed } from '@angular/core/testing';
 import {
+<<<<<<< HEAD
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
@@ -15,3 +16,30 @@ getTestBed().initTestEnvironment(
     teardown: { destroyAfterEach: false },
   }
 );
+=======
+    BrowserDynamicTestingModule,
+    platformBrowserDynamicTesting
+} from '@angular/platform-browser-dynamic/testing';
+
+declare const require: {
+    context(
+        path: string,
+        deep?: boolean,
+        filter?: RegExp
+    ): {
+        keys(): string[];
+        <T>(id: string): T;
+    };
+};
+
+// First, initialize the Angular testing environment.
+getTestBed().initTestEnvironment(
+    BrowserDynamicTestingModule,
+    platformBrowserDynamicTesting()
+);
+
+// Then we find all the tests.
+const context = require.context('./', true, /\.spec\.ts$/);
+// And load the modules.
+context.keys().map(context);
+>>>>>>> 997f8ec91f9e1cbd54fdc4920c39ca44f314f432
