@@ -18,9 +18,8 @@ import { AlertComponent } from './alert/alert.component';
         FlightsComponent,
         AlertComponent,
         DropdownDirective,
-        LoadingSpinnerComponent,
-        HttpClientModule
-    ], imports: [RouterModule.forChild([{ path: 'flights', component: FlightsComponent }]),
+        LoadingSpinnerComponent
+    ], imports: [
         FormsModule,
         CommonModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class SharedModule {}
