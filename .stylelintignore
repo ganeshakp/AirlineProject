@@ -1,0 +1,7 @@
+
+**/*.js
+vendor/**/*.css
+node_modules/*.css
+.firebase/*.css
+dist/**/*.css
+coverage/**/*.css
