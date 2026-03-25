@@ -89,35 +89,38 @@ export class AuthService {
     }
 
     async getUserRole(email: string) {
-        const users: newUser[] = await this.http
-            .get<newUser[]>(
-                'https://angularproject-2e085-default-rtdb.firebaseio.com/users.json'
-            )
-            .toPromise();
-        let userRole = '';
-        if(users.filter((a) => a.email == email)[0]) {
-          userRole = users.filter((a) => a.email == email)[0].role;
-        }
-        return userRole;
-    }
+        const usersData = await this.http
+            .get<newUser[] | null>(
+                'https://angularproject-2e085-default-rtdb.firebaseio.com/users.json'
+            )
+            .toPromise();
+        const users: newUser[] = usersData ?? [];
+        let userRole = '';
+        const found = users.find((a) => a.email === email);
+        if (found) {
+            userRole = found.role;
+        }
+        return userRole;
+    }
 
-    async addUser(userEmail: string) {
-        const users: newUser[] = await this.http
-            .get<newUser[]>(
-                'https://angularproject-2e085-default-rtdb.firebaseio.com/users.json'
-            )
-            .toPromise();
-        const user: newUser = { email: userEmail, role: 'staff' };
-        users.push(user);
-        this.http
-            .put<newUser[]>(
-                'https://angularproject-2e085-default-rtdb.firebaseio.com/users.json',
-                users
-            )
-            .subscribe(() => {
-                //console.log(response);
-            });
-    }
+    async addUser(userEmail: string) {
+        const usersData = await this.http
+            .get<newUser[] | null>(
+                'https://angularproject-2e085-default-rtdb.firebaseio.com/users.json'
+            )
+            .toPromise();
+        const users: newUser[] = usersData ?? [];
+        const user: newUser = { email: userEmail, role: 'staff' };
+        users.push(user);
+        this.http
+            .put<newUser[]>(
+                'https://angularproject-2e085-default-rtdb.firebaseio.com/users.json',
+                users
+            )
+            .subscribe(() => {
+                //console.log(response);
+            });
+    }
 
     autoLogin() {
         const userlogged = localStorage.getItem('user');

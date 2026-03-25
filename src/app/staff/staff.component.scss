@@ -1,0 +1,42 @@
+.flight-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-bottom: 8px;
+  padding: 5px 0;
+}
+
+.flight-title {
+  margin: 0;
+  padding: 0;
+  font-size: 22px;
+  font-weight: bold;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  margin: 0;
+
+  .btn {
+    margin: 0;
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .dropdown-toggle::after {
+    margin-left: 6px;
+  }
+
+  .dropdown-menu {
+    margin-top: 2px;
+    font-size: 12px;
+  }
+}
+
+.row {
+  margin-bottom: 8px;
+}

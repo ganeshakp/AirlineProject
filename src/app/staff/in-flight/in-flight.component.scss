@@ -1,100 +1,100 @@
 $tableColor: #ffffffeb;
 
 .passengerValue {
-  padding-left: 5px;
-  text-align: left;
+  padding-left: 5px;
+  text-align: left;
 }
 
 #seatsTable {
-  background-color: $tableColor;
-  border: solid 1px grey;
+  background-color: $tableColor;
+  border: solid 1px grey;
 
-  td,
-  th {
-    padding: 4px;
-    text-align: center;
-  }
+  td,
+  th {
+    padding: 4px;
+    text-align: center;
+  }
 }
 
 #seatsTable1 {
-  td,
-  th {
-    padding: 4px;
-    text-align: center;
-  }
+  td,
+  th {
+    padding: 4px;
+    text-align: center;
+  }
 }
 
 #legends {
-  padding: 4px;
-  color: black;
-  text-align: center;
-  font-style: italic;
-  background-color: $tableColor;
+  padding: 4px;
+  color: black;
+  text-align: center;
+  font-style: italic;
+  background-color: $tableColor;
 
-  td,
-  th {
-    border: solid 1px black;
-  }
+  td,
+  th {
+    border: solid 1px black;
+  }
 }
 
 #legends1 {
-  td,
-  th {
-    border: solid 1px black;
-  }
+  td,
+  th {
+    border: solid 1px black;
+  }
 }
 
 .chip {
-  display: inline-block;
-  padding: 0 25px;
-  height: 40px;
-  font-size: 16px;
-  line-height: 42px;
-  border-radius: 30px;
-  background-color: #8173f1a6;
+  display: inline-block;
+  padding: 0 25px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 42px;
+  border-radius: 30px;
+  background-color: #8173f1a6;
 }
 
 #serviceList {
-  margin-top: 0;
-  right: -50;
-  left: 160px;
-  position: relative;
-  text-align: right;
-  // float: right;
+  margin-top: 0;
+  right: -50;
+  left: 160px;
+  position: relative;
+  text-align: right;
+  // float: right;
 }
 
 #serviceList1 {
-  margin-top: 0;
-  right: -50;
-  left: 160px;
-  position: relative;
-  text-align: right;
-  // float: right;
+  margin-top: 0;
+  right: -50;
+  left: 160px;
+  position: relative;
+  text-align: right;
+  // float: right;
 }
 
 .close {
-  padding-left: 4px;
-  float: right;
-  font-size: 21px;
-  font-weight: 100;
-  line-height: 2;
-  color: #000;
-  text-shadow: 0 1px 0 #fff;
-  filter: alpha(opacity=20);
-  opacity: 0.8;
+  padding-left: 4px;
+  float: right;
+  font-size: 21px;
+  font-weight: 100;
+  line-height: 2;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=20);
+  opacity: 0.8;
 }
 
 .remove {
-  height: 25px;
-  width: 25px;
-  padding-bottom: 1px;
-  margin-left: 3px;
-  cursor: pointer;
+  height: 25px;
+  width: 25px;
+  padding-bottom: 1px;
+  margin-left: 3px;
+  cursor: pointer;
 }
 
 .listRemove {
-  height: 25px;
-  width: 25px;
-  padding-bottom: 1px;
-  margin-left: 3px;
+  height: 25px;
+  width: 25px;
+  padding-bottom: 1px;
+  margin-left: 3px;
 }

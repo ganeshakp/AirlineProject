@@ -170,14 +170,16 @@ export class PassengerMasterComponent implements OnInit, OnDestroy {
         this.passengerSeatNo = -1;
         this.passengerForm?.reset();
         this.passengers?.sort((a, b) => (a.seatNo > b.seatNo ? 1 : -1));
-        this.staffService.flightIdChanged.next(this.id);
-    }
+        if (this.id !== undefined) {
+            this.staffService.flightIdChanged.next(this.id);
+        }
+    }
 
-    onClosed() {
-        this.alertMessage = '';
-    }
+    onClosed() {
+        this.alertMessage = '';
+    }
 
-    ngOnDestroy() {
-        this.flightSubscription?.unsubscribe();
-    }
+    ngOnDestroy() {
+        this.flightSubscription?.unsubscribe();
+    }
 }

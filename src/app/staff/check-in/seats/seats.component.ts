@@ -1,4 +1,3 @@
-
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -40,15 +39,24 @@ export class SeatsComponent implements OnInit, OnDestroy {
         this.secondCoulmn = Array(10)
             .fill(1)
             .map((x, i) => i + 11);
-        this.flights = await (this.staffService.getAllFlights()) as unknown as Flight[] ;
+        this.flights = await (this.staffService.getAllFlights()) as unknown as Flight[];
+
+        console.log('Flights:', this.flights);
+
         this.activatedRoute.params.subscribe((params: Params) => {
             this.id = +params['id'];
+            console.log('Route ID:', this.id);
+
             this.selectedFlight = this.flights[this.id];
+            console.log('Selected Flight:', this.selectedFlight);
+
             if (this.selectedFlight?.hasOwnProperty('seats')) {
               this.seats = this.selectedFlight.seats ? this.selectedFlight.seats : [];
             } else {
-              this.seats = []
+              this.seats = [];
             }
+
+            console.log('Seats:', this.seats);
             this.activatedRoute.parent?.url.subscribe((value) => {
                 this.moduleName = value[0].path;
             });

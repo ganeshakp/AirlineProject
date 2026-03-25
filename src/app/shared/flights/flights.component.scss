@@ -1,56 +1,71 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+.flights { margin:0; padding:0; }
 
-import { FlightsComponent } from './flights.component';
-import { RouterTestingModule } from '@angular/router/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+.flights-container {
+  width: 100%;
+  max-height: 600px;
+  overflow-y: auto;
+}
 
-describe('FlightsComponent', () => {
-    let component: FlightsComponent;
-    let fixture: ComponentFixture<FlightsComponent>;
+.flights-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
 
-    beforeEach(async () => {
-        await TestBed.configureTestingModule({
-            imports: [RouterTestingModule, HttpClientTestingModule],
-            declarations: [FlightsComponent]
-        }).compileComponents();
-    });
+.flight-item {
+  padding: 16px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  background-color: #fff;
 
-    beforeEach(() => {
-        fixture = TestBed.createComponent(FlightsComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+  &:hover {
+    background-color: #f8f8f8;
+  }
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
-    });
+  &:last-child {
+    border-bottom: none;
+  }
+}
 
-    it('should set selectedflightid as the index parameter', () => {
-        component.onFlightSelect(1);
-        expect(component.selectedFlightId).toEqual(1);
-    });
-    it('should render list of flights depending upon number of flights', () => {
-        component.flights = [
-            {
-                ancillaryServicesProvided: ['Sandwiches', 'Snacks', 'Test 1'],
-                arrival: 'Banglore',
-                arrivalTime: new Date(),
-                departure: 'Chennai',
-                departureTime: new Date(),
-                mealsProvided: ['Special Meals', 'Standard Meals', 'test'],
-                name: 'Flight A',
-                seats: [],
-                shoppingItemsProvided: ['Perfume', 'Chocolates']
-            }
-        ];
-        fixture.detectChanges();
-        const aTag: HTMLElement[] = fixture.nativeElement.querySelectorAll('a');
-        expect(aTag.length).toEqual(1);
-    });
-    it('shouldn\'t render flight list if there are no flights', () => {
-        component.flights = [];
-        fixture.detectChanges();
-        const aTag: HTMLElement[] = fixture.nativeElement.querySelectorAll('a');
-        expect(aTag.length).toEqual(0);
-    });
-});
+.flight-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.flight-name {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.flight-time {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.flight-route {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #666;
+}
+
+.departure {
+  color: #555;
+}
+
+.arrow {
+  color: #999;
+  font-size: 14px;
+}
+
+.arrival {
+  color: #555;
+}

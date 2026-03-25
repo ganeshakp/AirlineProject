@@ -1,22 +1,15 @@
 <br />
 <app-alert [message]="alertMessage" *ngIf="alertMessage" (close)="onClosed()"></app-alert>
-<div class="row" style="text-align: right; font-style: italic">
-    <div class="col-md-2 col-xs-2" style="text-align: right; font-style: italic">
-        <button class="btn btn-primary" (click)="newPassenger()">New Passenger</button>
-    </div>
-    <div class="col-md-3 col-xs-3" *ngIf="passengers?.length != 0">
-        <select
-            id="filterSelect"
-            class="form-control"
-            [(ngModel)]="filterText"
-            (click)="selectedPassenger = undefined"
-        >
-            <option value="">-- Passengers Missing --</option>
-            <option value="passport">Passport Details</option>
-            <option value="address">Address Details</option>
-            <option value="dob">Date Of Birth</option>
-        </select>
-    </div>
+<div class="row">
+  <div class="col-md-4">
+    <button class="btn btn-primary mb-3" (click)="newPassenger()">New Passenger</button>
+    <select class="form-control" [(ngModel)]="filterText">
+      <option value="">-- Passengers Missing --</option>
+      <option value="passport">Passport Details</option>
+      <option value="address">Address Details</option>
+      <option value="dob">Date Of Birth</option>
+    </select>
+  </div>  
 </div>
 <br />
 <div *ngIf="(passengers | passengerMasterFilter: filterText)?.length === 0">

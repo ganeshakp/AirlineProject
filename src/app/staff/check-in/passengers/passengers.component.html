@@ -1,107 +1,81 @@
+<div class="row" *ngIf="passengers?.length">
+  <div class="col-xs-2 text-right" style="font-style: italic; font-size: 16px; line-height: 2.2;">Filter:</div>
+  <div class="col-xs-3">
+    <select id="filterSelect" class="form-control" [(ngModel)]="filterText" (click)="selectedPassenger = undefined">
+      <option value="">-- All --</option>
+      <option value="CheckedIn">Checked In</option>
+      <option value="NotCheckedIn">Yet To Check In</option>
+      <option value="WheelChair">Wheel Chair</option>
+    </select>
+  </div>
+</div>
 
-<br />
-<div class="row" *ngIf="passengers?.length != 0" style="text-align: right;font-style: italic;">
-  <div class="col-xs-2" style="line-height: 2.42857143;font-size: medium; text-align: right;font-style: italic;">
-    Filter:
-  </div>
-  <div class="col-xs-3">
-    <select id="filterSelect" class="form-control" [(ngModel)]="filterText" (click)="selectedPassenger = undefined">
-      <option value="">-- All --</option>
-      <option value="CheckedIn">Checked In</option>
-      <option value="NotCheckedIn">Yet To Check In</option>
-      <option value="WheelChair">Wheel Chair</option>
-    </select>
-  </div>
+<div *ngIf="(passengers | passengerFilter: filterText)?.length === 0" class="alert alert-warning">
+  <h5 class="mb-0">No passengers found.</h5>
 </div>
-<br />
-<div *ngIf="(passengers | passengerFilter: filterText)?.length === 0">
-  <h3>No Passengers Found</h3>
-</div>
+
 <div class="row">
-  <div class="col-xs-5">
-    <a style="cursor: pointer"
-                *ngFor="let passenger of passengers | passengerFilter: filterText;"
-                (click)="this.selectedPassenger = passenger" class="list-group-item clearfix">
-      <div style="cursor: pointer">
-        <h4 class="list-group-item-heading">{{ passenger.name }}</h4>
-        <p class="list-group-item-text">
-          {{ 'Seat Number : ' + passenger.seatNo }}
-        </p>
-      </div>
-    </a>
-  </div>
-  <div class="col-xs-6" *ngIf="selectedPassenger">
-    <div class="row" style="background-color: #bdafd5; color: black">
-      <h3 style="text-align: center">Passenger Details</h3>
-      <hr />
-      <table>
-        <tr>
-          <td class="pull-right">
-            <h4>Name :</h4>
-          </td>
-          <td>
-            <h4 class="passengerValue">{{ this.selectedPassenger?.name }}</h4>
-          </td>
-        </tr>
-        <tr>
-          <td class="pull-right">
-            <h4>Seat :</h4>
-          </td>
-          <td>
-            <h4 class="passengerValue">
-              {{ this.selectedPassenger?.seatNo }}
-            </h4>
-          </td>
-        </tr>
-        <tr>
-          <td class="pull-right">
-            <h4>Special Request :</h4>
-          </td>
-          <td>
-            <h4 class="passengerValue">
-              {{ this.selectedPassenger?.splRequest || 'NA' }}
-            </h4>
-          </td>
-        </tr>
-        <tr>
-          <td class="pull-right">
-            <h4>Ancillary Services :</h4>
-          </td>
-          <td>
-            <h4 class="passengerValue">
-              {{ this.selectedPassenger?.ancillaryServices?.length ? this.selectedPassenger?.ancillaryServices : 'NIL' }}
-            </h4>
-          </td>
-        </tr>
-        <tr>
-          <td class="pull-right">
-            <h4>Checked In :</h4>
-          </td>
-          <td>
-            <h4 class="passengerValue">
-              {{ this.selectedPassenger?.checkedIn ? 'Yes' : 'No' }}
-            </h4>
-          </td>
-        </tr>
-      </table>
-    </div>
-    <br />
-    <div class="row" style="text-align: center">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <select id="changeSeat" class="form-control" *ngIf = "seatChangeConfirm" [(ngModel)]="newSeatSelected">
-          <option value="0">-- Available Seats --</option>
-          <option *ngFor="let emptySeat of emptySeats" [ngValue]="emptySeat">{{ emptySeat }}</option>
-        </select>
-      </div>
-      <div class="col-md-3"></div>
-      <button type="button" class="btn btn-primary" style="text-align: center" (click)="onChangeSeatClick(this.selectedPassenger.seatNo,newSeatSelected)">
-        {{ !seatChangeConfirm ?  'Change Seat' : '✓' }}
-      </button>
-      <button type="button" *ngIf = "seatChangeConfirm" class="btn btn-danger" style="text-align: center" (click)="seatChangeConfirm = false">
-        X
-      </button>
-    </div>
+  <div class="col-xs-5">
+    <div class="list-group">
+      <a
+        *ngFor="let passenger of passengers | passengerFilter: filterText"
+        (click)="selectedPassenger = passenger"
+        class="list-group-item"
+        [class.active]="selectedPassenger === passenger"
+        style="cursor: pointer"
+      >
+        <h4 class="list-group-item-heading">{{ passenger.name }}</h4>
+        <p class="list-group-item-text">Seat Number: {{ passenger.seatNo }}</p>
+      </a>
+    </div>
+  </div>
 
-  </div>
+  <div class="col-xs-7" *ngIf="selectedPassenger">
+    <div class="panel panel-default passenger-details-card">
+      <div class="panel-heading text-center">
+        <h3 class="panel-title">Passenger Details</h3>
+      </div>
+      <div class="panel-body">
+        <table class="table table-condensed passenger-table">
+          <tbody>
+            <tr>
+              <th class="text-right">Name</th>
+              <td>{{ selectedPassenger.name }}</td>
+            </tr>
+            <tr>
+              <th class="text-right">Seat</th>
+              <td>{{ selectedPassenger.seatNo }}</td>
+            </tr>
+            <tr>
+              <th class="text-right">Special Request</th>
+              <td>{{ selectedPassenger.splRequest || 'NA' }}</td>
+            </tr>
+            <tr>
+              <th class="text-right">Ancillary Services</th>
+              <td>{{ selectedPassenger.ancillaryServices.length ? selectedPassenger.ancillaryServices : 'NIL' }}</td>
+            </tr>
+            <tr>
+              <th class="text-right">Checked In</th>
+              <td>{{ selectedPassenger.checkedIn ? 'Yes' : 'No' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-8">
+        <select id="changeSeat" class="form-control" *ngIf="seatChangeConfirm" [(ngModel)]="newSeatSelected">
+          <option value="0">-- Available Seats --</option>
+          <option *ngFor="let emptySeat of emptySeats" [ngValue]="emptySeat">{{ emptySeat }}</option>
+        </select>
+      </div>
+      <div class="col-xs-4">
+        <button type="button" class="btn btn-primary btn-block" (click)="onChangeSeatClick(selectedPassenger.seatNo, newSeatSelected)">{{ seatChangeConfirm ? '✓' : 'Change Seat' }}</button>
+      </div>
+      <div class="col-xs-12" *ngIf="seatChangeConfirm">
+        <button type="button" class="btn btn-danger btn-block" (click)="seatChangeConfirm = false">Cancel</button>
+      </div>
+    </div>
+  </div>
 </div>

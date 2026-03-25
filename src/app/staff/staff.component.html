@@ -1,34 +1,34 @@
 <div class="col-md-4">
-      <app-flights></app-flights>
+      <app-flights></app-flights>
     </div>
     <div class="col-md-8">
-      <div class="row" *ngIf="selectedFlight">
-          <div class="col-xs-12">
-              <h1>
-                  Flight Name : {{ selectedFlight?.name }}
-                  <div class="btn-group" appdropdown>
-                      <button type="button" class="btn btn-primary dropdown-toggle">
-                          Manage <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu">
-                          <li>
-                              <a style="cursor: pointer" [routerLink]="[selectedFlightId,'seats']"
-                                  > {{moduleName === 'checkin' ? 'Seat Allocation' : 'In-Flight Services' }}</a
-                              >
-                          </li>
-                          <li *ngIf="moduleName === 'checkin'">
-                              <a style="cursor: pointer" [routerLink]="[selectedFlightId,'passengers']">
-                                  Passenger Details
-                              </a>
-                          </li>
-                      </ul>
-                  </div>
-              </h1>
-          </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <router-outlet></router-outlet>
-        </div>
-      </div>
+      <div class="row" *ngIf="selectedFlight">
+          <div class="col-xs-12">
+              <div class="flight-header">
+                  <h1 class="flight-title">Flight Name : {{ selectedFlight.name }}</h1>
+                  <div class="btn-group" appdropdown>
+                      <button type="button" class="btn btn-primary dropdown-toggle">
+                          Manage <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                          <li>
+                              <a style="cursor: pointer" [routerLink]="[selectedFlightId,'seats']"
+                                  > {{moduleName === 'checkin' ? 'Seat Allocation' : 'In-Flight Services' }}</a
+                              >
+                          </li>
+                          <li *ngIf="moduleName === 'checkin'">
+                              <a style="cursor: pointer" [routerLink]="[selectedFlightId,'passengers']">
+                                  Passenger Details
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
     </div>

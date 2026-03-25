@@ -1,4 +1,3 @@
-
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -47,8 +46,12 @@ export class InFlightComponent implements OnInit, OnDestroy {
             this.id = +params['id'];
             const flights = await this.staffService.getAllFlights();
             this.selectedFlight = flights[this.id];
+
+            console.log('Selected Flight:', this.selectedFlight);
+            console.log('Seats:', this.selectedFlight?.seats);
+
             if (this.selectedFlight?.hasOwnProperty('seats')) {
-                this.seats = this.selectedFlight?.seats ? this.selectedFlight.seats : [];
+                this.seats = this.selectedFlight.seats;
             } else {
                 this.seats = [];
             }
@@ -66,9 +69,7 @@ export class InFlightComponent implements OnInit, OnDestroy {
             this.staffService.getSelectedFlight(index).subscribe((flight) => {
                 this.selectedFlight = flight;
                 if (this.selectedFlight?.hasOwnProperty('seats')) {
-                    this.seats = this.selectedFlight?.seats
-                        ? this.selectedFlight.seats
-                        : [];
+                    this.seats = this.selectedFlight.seats;
                     this.ancillaryServices =
                         this.selectedFlight?.ancillaryServicesProvided;
                     this.shoppingList = this.selectedFlight?.shoppingItemsProvided;

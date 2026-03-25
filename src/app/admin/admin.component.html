@@ -1,35 +1,30 @@
-
-<div class="col-md-4">
-      <app-flights></app-flights>
+<div class="row">
+  <div class="col-md-4">
+    <app-flights></app-flights>
+  </div>
+  <div class="col-md-8">
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+          <h3 class="mb-0">Flight Name: {{ selectedFlight?.name }}</h3>
+          <div class="btn-group" appdropdown>
+            <button type="button" class="btn btn-primary dropdown-toggle">Manage <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" [routerLink]="[selectedFlightId, 'passengersMaster']">Passengers</a>
+              </li>
+              <li>
+                <a class="dropdown-item" [routerLink]="[selectedFlightId, 'services']">Flight Services</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-md-8">
-      <div class="row" *ngIf="selectedFlight">
-          <div class="col-xs-12">
-              <h1>
-                  Flight Name : {{ selectedFlight?.name }}
-                  <div class="btn-group" appdropdown>
-                      <button type="button" class="btn btn-primary dropdown-toggle">
-                          Manage <span class="caret"></span>
-                      </button>
-                      <ul class="dropdown-menu">
-                          <li>
-                              <a style="cursor: pointer" [routerLink]="[selectedFlightId,'passengersMaster']"
-                                  > Passengers </a
-                              >
-                          </li>
-                          <li>
-                              <a style="cursor: pointer" [routerLink]="[selectedFlightId,'services']">
-                                  Flight Services
-                              </a>
-                          </li>
-                      </ul>
-                  </div>
-              </h1>
-          </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <router-outlet></router-outlet>
-        </div>
-      </div>
+    <div class="row">
+      <div class="col-12">
+        <router-outlet></router-outlet>
+      </div>
     </div>
+  </div>
+</div>

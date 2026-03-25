@@ -21,19 +21,16 @@ export class StaffService {
     constructor(private http: HttpClient) {}
 
     async getAllFlights() {
-      const flights : Flight[] = (await (await this.fetchAllFlights()).toPromise())
-      if (this.Flights.length) {
-        return this.Flights;
-      } else {
-        this.Flights = flights
-        return this.Flights
-      }
+        const flights: Flight[] = (await (await this.fetchAllFlights()).toPromise()) ?? [];
+        if (this.Flights.length) {
+            return this.Flights;
+        } else {
+            this.Flights = flights;
+            return this.Flights;
+        }
+    }
 
-
-
-    }
-
-    getSelectedFlight(index: number) {
+    getSelectedFlight(index: number) {
         return this.http
             .get<Flight>(
                 'https://angularproject-2e085-default-rtdb.firebaseio.com/flights/' +
